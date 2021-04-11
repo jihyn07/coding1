@@ -1,0 +1,22 @@
+git 설정
+
+git config --global user.email "깃허브에 등록한 이메일" : 깃 깔고 맨처음에만 함
+git config --global user.name "깃허브에 등록한 이름" : 깃 깔고 맨처음에만 함
+git init : 프로젝트 폴더 만들고, 처음에만 함
+git remote add origin "깃주소" : 프로젝트 폴더 만들고, 처음에만 함
+
+
+
+git 가져오기
+
+git pull origin master : 깃에서 코드 가져옴
+
+
+
+
+git 저장하기
+
+git add . : 파일 싣기
+git commit -m "메시지" : 버전정하기
+git push origin master : 저장
+

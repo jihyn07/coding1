@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- JS 도입 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!-- 뷰 인스턴스 생성 let app1 = new Vue() -> 변수 바인딩 {{ }} -> 파라미터 무/유 메소드 바인딩 {{ }} -->
+    <h2>App1</h2>
+    <div id="app1">
+        {{ person.name }}의 나이는 {{ person.age }}살입니다.
+        <!-- 내년에는 {{ nextYear() }}살이 됩니다. -->
+        {{ printNextYear() }}
+        {{ printHobby('파이썬') }}
+    </div>
+
+    <!-- Script -->
+    <script>
+        let app1 = new Vue({
+            el: '#app1',
+            data: { 
+                person: {
+                    name: 'Yang',
+                    age: 34
+                }
+            },
+            methods: {
+                nextYear: function () {
+                    return this.person.age + 1                    
+                },
+                printNextYear: function () {
+                    return '그는 내년에 ' + this.nextYear() + '살이 됩니다.'
+                },
+                printHobby: function (hobby) {
+                    return '그는 ' + hobby + '이 취미입니다.'
+                },
+            },
+        })
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h2>App2</h2>
+    <div id="app2">
+        <input :type="type" :placeholder="idPlace" :value="text" @keyup="update"></input><br>
+        {{ url }}
+        <a :href="url" :target="target">링크</a>
+        <button @click="changePlaceholderKo" @contextMenu="alertRightClick">한국어</button>
+        <button @click="changePlaceholderEn">영어</button>
+        <button @click="changePlaceholderJa">일본어</button>
+    </div>
+
+    <script>
+        let app2 = new Vue({
+            el: '#app2',
+            data: {
+                type: 'text',
+                idPlace: '주소를 입력해주세요.',
+                text: "",
+                url: "http://google.co.kr",
+                target: "blank",
+            },
+            methods: {
+                alertRightClick: function () {
+                    alert('이번 우클릭')
+                },
+                changePlaceholderKo: function () {
+                    this.idPlace='주소를 입력해주세요.'
+                },
+                changePlaceholderEn: function () {
+                    this.idPlace='IDを入力してください。'
+                },
+                changePlaceholderJa: function () {
+                    this.idPlace='Enter your ID'
+                },
+                update: function () {
+                    // console.log(event) // event는 @event를 했을 때의 행위의 모든 정보가 담깁니다.
+                    this.text = event.target.value
+                    this.url = event.target.value
+                }
+            },
+        })
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
