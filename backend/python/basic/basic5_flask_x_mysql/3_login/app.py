@@ -91,5 +91,20 @@ def loginpost():
             # return 'login fail...'
             return render_template('index.html', msg=msg)
 
+# Controller = localhost:5000/loginpost
+@app.route('/logout', methods=['GET'])
+# model
+def logout():
+    session.pop('member', None)
+    session.pop('id', None)
+    session.pop('username', None)
+    session.pop('gender', None)
+    session.pop('tel', None)
+    session.pop('email', None)
+    session.pop('birth', None)
+    session.pop('address', None)
+    session.pop('joindate', None)
+    return redirect('login')
+
 if __name__ == '__main__':
     app.run(debug=True)

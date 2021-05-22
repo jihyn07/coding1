@@ -36,11 +36,11 @@ member1_row = curs.fetchall() # 전부 가져오기 # fetchone 하나 가져오�
 def getIndex():
     return render_template('index.html', member1=member1_row)
 
-# Controller = localhost:5000/login
-@app.route('/login', methods=['GET', 'POST'])
+# Controller = localhost:5000/join
+@app.route('/join', methods=['GET', 'POST'])
 # model
-def getLogin():
-    return render_template('login.html')
+def join():
+    return render_template('join.html')
 
 # Controller = localhost:5000/write
 @app.route('/write', methods=['GET', 'POST'])

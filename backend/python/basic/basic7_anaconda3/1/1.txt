@@ -1,0 +1,12 @@
+[아나콘다 설치]
+www.anaconda.com에서 OS에 맞는 버전 다운로드 후 실행
+next next -> all users 체크 -> c:\Anaconda3 -> add path, regist 둘다 체크
+
+[파이썬 idle 실행] Integrated DeveLopment Environment
+C:\Anaconda3\Lib\idlelib
+idle.bat 실행 (숏컷생성해두기)
+파일 열기 -> 열고싶은 파일 열기 -> F5로 실행
+
+[아나콘다에 없는 라이브러리 설치]
+윈도우 버튼 -> anaconde prompt를 검색 -> pip install tensorflow
+
