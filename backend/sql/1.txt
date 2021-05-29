@@ -1,0 +1,42 @@
+[SQL]
+
+1. 관계형 데이터베이스 (RDBMS)
+    RDBMS란?
+
+    SQL이란?
+        RDBMS에 쿼리(요청)해서 데이터를 조작하는 것
+
+1. SQL 명령어 종류
+    DDL : Data Definition Language
+        create table samsung(
+            field1 int auto_increment, 
+            field2 varchar(30) NOT NULL, 
+            field3 Date,
+            primary key (field1, field2)) 
+            character set utf8
+        drop table samsung
+        alter table samsung add field4 int(3) null after field3
+        alter table samsung rename to samsung_re
+        alter table samsung_re rename to samsung
+        truncate table samsung : 데이터포맷
+    DML : Data Manipulation Language
+        select * from samsung where 1
+        insert into samsung value(NULL, '80000', CURRENT_TIMESTAMP, 1)        
+        insert into samsung(field1, field2) value(NULL, '81000')
+        delete from samsung # 실행하지 마세요
+        delete from samsung where field1=2
+        update samsung set field2='79000' where field1=1
+    DCL : Data Control Language
+        DCL
+        grant select on * to user1 # mysql 이라고 하는 DB도 줘야 로그인이 되니까 다 준 것
+        grant insert on test1.samsung to user1 # test1.samsung은 [db.table] 폼입니다.
+        revoke select, insert on * from user1
+        * TCL (Transaction Control Language)    
+        commit / ctrl + enter
+        savepoint point1
+        rollback to point1
+
+1. a5m2와 연동
+    db 연동후 파일 - 신규 - sql - 쿼리탭이 생긴다 - 여기에서 sql을 작성한다.
+    컨트롤 + enter : commit
+    커런트스키마에 있는 테이블만 반영되므로 주의

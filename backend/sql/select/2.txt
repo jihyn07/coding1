@@ -1,0 +1,65 @@
+데이터 준비
+CREATE TABLE `kakao` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `price` varchar(30) NOT NULL,
+  `low` varchar(30) DEFAULT NULL,
+  `high` varchar(30) DEFAULT NULL,
+  `Date` date DEFAULT NULL,
+  `number` int(3) DEFAULT NULL,
+  PRIMARY KEY (`id`,`price`)
+) DEFAULT CHARSET=utf8
+
+Insert into kakao values (Null, '119000', '116000', '123000', CURRENT_TIMESTAMP, 1)
+,(null, '116000', '114000', '121000', CURRENT_TIMESTAMP, 1)
+,(null, '126000', '124000', '131000', CURRENT_TIMESTAMP, null)
+,(null, '134000', '134000', '141000', CURRENT_TIMESTAMP, 2)
+,(null, '155000', '154000', '151000', CURRENT_TIMESTAMP, 2)
+
+select price, low, high from kakao
+
+데이터준비2
+
+CREATE TABLE `intel` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `price` varchar(30) NOT NULL,
+  `low` varchar(30) DEFAULT NULL,
+  `high` varchar(30) DEFAULT NULL,
+  `Date` date DEFAULT NULL,
+  `number` int(3) DEFAULT NULL,
+  PRIMARY KEY (`id`,`price`)
+) DEFAULT CHARSET=utf8
+
+Insert into intel values (Null, '11900', '11600', '12000', CURRENT_TIMESTAMP, 1)
+,(null, '11600', '11400', '11000', CURRENT_TIMESTAMP, 1)
+,(null, '12600', '12400', '13000', CURRENT_TIMESTAMP, null)
+,(null, '13400', '13400', '14000', CURRENT_TIMESTAMP, 2)
+,(null, '15500', '15400', '15000', CURRENT_TIMESTAMP, 2)
+
+비교연산자 사용
+select price from kakao where number = 1
+select price from kakao where price > 120000
+select price from kakao where low > 120000 and high > 140000
+select price from kakao where number is not null
+비교연산자 종류
+!=, <> 같지않은것
+>= 이상
+<= 이하
+BETWEEN a and b : a, b사이의 값인것을 선택
+In(a,b,c) a,b,c 중 어느 하나인 것을 선택
+is Null : Null인 것 선택
+is Not Null : Null이 아닌 것 선택
+AND
+OR
+NOT
+
+조회 결과값을 order by로 정렬하기 : 기본 오름차순. 내림차순하고싶으면 뒤에 desc 붙임.
+select * from kakao order by price
+select * from kakao order by price desc
+select * from kakao order by 4 # 4번째 컬럼 기준
+select * from kakao order by (price+low+high)/3 desc
+
+집합 연산자 사용해서 조회하기
+select * from kakao where number = 1 UNION select * from intel where number = 1 # 구매시점만 표기
+select price from kakao UNION select price from intel # 중복값은 자동 제거됨
+select price from kakao UNION ALL select price from intel # 중복 제거 안하고 내보냄
+select price from kakao INTERSECT select price from intel # 중복값만 내보냄

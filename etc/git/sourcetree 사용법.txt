@@ -1,0 +1,10 @@
+초기설치
+bitbucket skip -> mercurial unchecked -> next next -> no
+ui가 뜨면 github 저장소 주소를 클론한다.깃주소, 빈폴더주소가 필요하다.
+
+
+푸쉬 순서
+코딩을 한다.
+소스트리에서 커밋을 누른다. 스테이징을 한다. (git add .)
+밑의 메시지박스에 커밋메시지를 작성후, 커밋 누른다.
+

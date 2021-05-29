@@ -1,0 +1,59 @@
+기타 JOIN 들
+
+1. 수업준비
+create table mysql.table_8th_customer(name varchar(10), point int) character set utf8
+
+create table mysql.table_8th_gift(name varchar(20) null, point_s int null, point_e int null) character set utf8
+
+INSERT INTO mysql.table_8th_customer (name, point) VALUES ('김철수', 5)
+,('홍길동', 12)
+,('박영희', 14)
+,('심청이', 18)
+,('호랑이', 21)
+,('김정수', 16)
+,('양아영', 9)
+,('심수지', 22)
+,('강세린', 24)
+
+INSERT INTO mysql.table_8th_gift (name, point_s, point_e) VALUES ('공기청정기', 11, 15)
+,('아이폰', 21, 25)
+,('로봇청소기', 6, 10)
+,('상품권', 1, 5)
+,('스마트패드', 16, 20)
+
+1. Inner Join이지만 비등가조인
+
+1) Inner join (Non Equi Join) : 
+예시 : 
+select c.name as 고객명, 
+	   c.point as 고객_point, 
+	   g.name as 상품명
+	   from mysql.table_8th_customer c, mysql.table_8th_gift g
+	   where c.point between g.point_s and g.point_e
+
+where 절을 보면 between, and 가 보이실 겁니다.
+gift 테이블의 point_s에서부터 point_e 사이에 customer 테이블의 값이 해당한다면 두 테이블을 join 하라는 의미입니다.
+기존의 Inner join에서 "= 표시가 없고 between등으로 조건절이 변형되었다는 점"만 다릅니다.
+
+
+2. Outer join : 
+정의 : 
+서로 같은 값을 가지는 것은 Inner Join(Equi Join)처럼 합쳐서 처리하지만, 
+"다른 값"을 가지는 것은 조인값을 "NULL"로 둡니다. 
+
+현재, table_7th_student 테이블에서, student, professor 테이블이 각각 있을 때,
+student 테이블에 일부 담당 교수 ID가 없는(null로 되어있는) 학생이 있습니다.
+이런 경우를 아직 담당교수 배정이 안된 학생이라고 가정한다면 
+두 테이블을 일반 inner join으로 join 한다면 전체 학생에서 
+아직 담당 교수가 배정되지 않은 학생들은 빠지게 됩니다.
+이런 누락 없이 데이터를 모두 보고자 할 때 outer join을 쓰게 됩니다.
+
+예시 : 
+select s.name, s.bl_prfs_id, p.name, p.prfs_id 
+    from mysql.table_7th_student s
+    left outer join mysql.table_7th_professor p
+    on s.bl_prfs_id = p.prfs_id
+
+
+엑셀파일로 테이블 정의서 만들어오기
+부트스트랩 템플릿만들기
